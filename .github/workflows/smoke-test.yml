@@ -1,0 +1,19 @@
+name: Smoke test - Cypress
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  cypress-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+      uses: actions/checkout@v4
+    
+      - name: Run cypress test
+      uses: cypress-io/github-action@v6
+      with:
+        command: npm run cy:run
