@@ -10,4 +10,8 @@ describe("Verify some tests assertion", () => {
   it("Verify float number", () => {
     expect(10.2).to.eq(10.2);
   });
+
+  it("Mak a test failed as expected", () => {
+    expect(10.2).to.eq(10);
+  });
 });
