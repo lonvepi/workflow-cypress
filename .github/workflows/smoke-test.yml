@@ -1,19 +1,22 @@
-name: Smoke test - Cypress
+name: E2E smoke tests
 on:
   push:
     branches:
-      - main
+      - develop
   pull_request:
+    types: [opened, reopened]
     branches:
-      - main
+      - develop
 jobs:
-  cypress-test:
+  cypress-run:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
-    
-      - name: Run cypress test
+      - name: Setup npm package
+        run: npm i
+      - name: Run E2E test
         uses: cypress-io/github-action@v6
-      with:
-        command: npm run cy:run
+        with:
+          command: npm run cy:run
